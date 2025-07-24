@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopper Intent Predictor</title>
+  <style>
+    body{font-family:sans-serif;max-width:800px;margin:40px auto;}
+    label{display:block;margin-top:8px;}
+    input,select{padding:6px;width:100%;}
+    button{margin-top:14px;padding:10px 20px;}
+    .result{margin-top:20px;font-size:1.2em;font-weight:bold;}
+  </style>
+</head>
+<body>
+  <h1>Will this visitor purchase?</h1>
+  <form method="post">
+    <!-- A FEW representative fields. Add the rest of your 17 features similarly. -->
+    <label>Administrative <input type="number" name="Administrative" required></label>
+    <label>Administrative_Duration <input type="number" step="any" name="Administrative_Duration" required></label>
+    <label>Month
+      <select name="Month">
+        <option>Feb</option><option>Mar</option><option>Apr</option>
+        <option>May</option><option>June</option><option>Jul</option>
+        <option>Aug</option><option>Sep</option><option>Oct</option>
+        <option>Nov</option><option>Dec</option><option>Jan</option>
+      </select>
+    </label>
+    <label>VisitorType
+      <select name="VisitorType">
+        <option>Returning_Visitor</option>
+        <option>New_Visitor</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label>Weekend
+      <select name="Weekend">
+        <option value="True">True</option>
+        <option value="False">False</option>
+      </select>
+    </label>
+
+    <!-- add remaining inputs ... -->
+
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if prediction is not none %}
+    <p class="result">Prediction: <span>{{ prediction }}</span></p>
+  {% endif %}
+</body>
+</html>
